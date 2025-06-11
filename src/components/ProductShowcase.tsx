@@ -9,51 +9,85 @@ interface Product {
   name: string;
   description: string;
   price: string;
+  priceValue: number;
   image: string;
   category: string;
   tags: string[];
 }
 
 const ProductShowcase = () => {
-  // Define our products with actual data
+  // Define our products with updated data and swapped images
   const products: Product[] = [
     {
       id: 1,
       name: "NomNom Classic",
-      description: "Your flagship everyday phone case! Durable, stylish, and designed for daily adventures. Keeps your device safe while adding a touch of personality.",
+      description: "Flagship everyday phone case combining durability with playful style. Your daily adventures deserve reliable protection!",
       price: "$24.99",
-      image: "/lovable-uploads/1c7a9959-67da-473e-842d-d71de39bc396.png",
+      priceValue: 24.99,
+      image: "/lovable-uploads/e10d21f9-fe98-426d-a908-26f7a6ce6f75.png", // Swapped with Creator Kit image
       category: "Phone Cases",
-      tags: ["EverydayCase", "Flagship", "DurableDesign", "PhoneProtection"]
+      tags: ["EverydayEssential", "FlagshipCase", "DropProtection"]
     },
     {
       id: 2,
-      name: "NomNom Creator Kit",
-      description: "Premium bundle for creators! Includes exclusive accessories like a detachable grip, card holder, and stand. Perfect for content creators on the go.",
+      name: "NomNom Creator Pro Kit",
+      description: "Premium creator bundle featuring detachable grip, card holder & adjustable stand. Perfect for content creation on-the-move!",
       price: "$39.99",
-      image: "/lovable-uploads/e10d21f9-fe98-426d-a908-26f7a6ce6f75.png",
-      category: "Premium Bundles",
-      tags: ["CreatorBundle", "PremiumKit", "AllInOne", "ContentCreator"]
+      priceValue: 39.99,
+      image: "/lovable-uploads/bcdc024b-f7d9-410b-a60e-f23e3d03e299.png", // New attachment image
+      category: "Pro Bundles",
+      tags: ["ProCreatorKit", "AllInOneBundle", "ContentCreator"]
     },
     {
       id: 3,
       name: "NomFits",
-      description: "Affordable elegance meets sleek design. Slim, lightweight, and perfect for minimalist lovers who want reliable protection without bulk.",
+      description: "Sleek minimalist design. Ultra-slim, lightweight protection that disappears in your pocket.",
       price: "$19.99",
+      priceValue: 19.99,
       image: "/lovable-uploads/6954835b-f799-40a3-ab7d-6d8089ae0736.png",
       category: "Phone Cases",
-      tags: ["SlimCase", "AffordableStyle", "Minimalist", "Lightweight"]
+      tags: ["SlimFit", "MinimalistStyle", "BudgetFriendly"]
     },
     {
       id: 4,
       name: "NomBits",
-      description: "Fun bite-sized accessories to express yourself! Mix and match charms, stickers, and pop sockets. Joyful customization for your everyday tech.",
+      description: "Bite-sized joy! Mixable charms, stickers & pop sockets to personalize your tech.",
       price: "$14.99",
+      priceValue: 14.99,
       image: "/lovable-uploads/5d516048-5c4f-4f96-bc37-35906cb91e80.png",
       category: "Accessories",
-      tags: ["FunAccessories", "CustomizeYourTech", "PopSockets", "PlayfulStyle"]
+      tags: ["TechAccessories", "CustomizeLife", "FunAddons"]
     }
   ];
+
+  const addToCart = (product: Product) => {
+    const cartItem = {
+      id: product.id,
+      name: product.name,
+      price: product.priceValue,
+      image: product.image,
+      quantity: 1
+    };
+
+    const existingCart = localStorage.getItem('nomnom-cart');
+    let cartItems = existingCart ? JSON.parse(existingCart) : [];
+    
+    const existingItemIndex = cartItems.findIndex((item: any) => item.id === product.id);
+    
+    if (existingItemIndex > -1) {
+      cartItems[existingItemIndex].quantity += 1;
+    } else {
+      cartItems.push(cartItem);
+    }
+    
+    localStorage.setItem('nomnom-cart', JSON.stringify(cartItems));
+    
+    // Dispatch custom event to update cart count in navigation
+    window.dispatchEvent(new Event('cartUpdated'));
+    
+    // Show confirmation
+    alert(`${product.name} added to cart!`);
+  };
 
   return (
     <section id="products" className="py-20 bg-gradient-to-b from-white to-lavender/30">
@@ -116,6 +150,7 @@ const ProductShowcase = () => {
 
                 <CardFooter className="pt-4">
                   <Button 
+                    onClick={() => addToCart(product)}
                     className="w-full bg-soft-pink hover:bg-pink-300 text-gray-800 font-semibold py-6 rounded-full"
                   >
                     <ShoppingCart size={18} className="mr-2" />

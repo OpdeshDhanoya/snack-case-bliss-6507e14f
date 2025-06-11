@@ -21,8 +21,8 @@ const Footer = () => {
           <div className="mb-8">
             <div className="flex items-center justify-center space-x-2 mb-4">
               <Mail className="text-soft-pink w-5 h-5" />
-              <a href="mailto:hello@nomnomcase.com" className="text-soft-pink hover:text-pink-300 transition-colors">
-                hello@nomnomcase.com
+              <a href="mailto:nomnomcase25@gmail.com" className="text-soft-pink hover:text-pink-300 transition-colors">
+                nomnomcase25@gmail.com
               </a>
             </div>
           </div>
@@ -31,14 +31,18 @@ const Footer = () => {
           <div className="mb-8">
             <div className="flex justify-center space-x-6">
               <a 
-                href="#" 
+                href="https://www.instagram.com/nomnom_case/" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-gray-700 hover:bg-soft-pink hover:text-gray-800 p-3 rounded-full transition-all duration-300 transform hover:scale-110"
                 aria-label="Instagram"
               >
                 <Instagram className="w-6 h-6" />
               </a>
               <a 
-                href="#" 
+                href="https://www.tiktok.com/@nomnom.case" 
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-gray-700 hover:bg-soft-pink hover:text-gray-800 p-3 rounded-full transition-all duration-300 transform hover:scale-110"
                 aria-label="TikTok"
               >
