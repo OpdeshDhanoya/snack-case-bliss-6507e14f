@@ -1,9 +1,6 @@
-
 import { Cookie, Smartphone, Heart, Zap } from 'lucide-react';
-
 const AboutSection = () => {
-  return (
-    <section id="about" className="py-20 bg-gradient-to-b from-lavender/30 to-mint-green/20">
+  return <section id="about" className="py-20 bg-gradient-to-b from-lavender/30 to-mint-green/20">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16 animate-fade-up">
@@ -30,27 +27,31 @@ const AboutSection = () => {
                 <div className="absolute -top-4 -right-4 bg-mint-green/80 rounded-full p-3 animate-float">
                   <Cookie className="text-white w-6 h-6" />
                 </div>
-                <div className="absolute bottom-8 -left-8 bg-lavender/80 rounded-full p-3 animate-float" style={{ animationDelay: '1s' }}>
+                <div className="absolute bottom-8 -left-8 bg-lavender/80 rounded-full p-3 animate-float" style={{
+                animationDelay: '1s'
+              }}>
                   <Smartphone className="text-white w-6 h-6" />
                 </div>
-                <div className="absolute top-20 -left-12 bg-cream/80 rounded-full p-2 animate-float" style={{ animationDelay: '2s' }}>
+                <div className="absolute top-20 -left-12 bg-cream/80 rounded-full p-2 animate-float" style={{
+                animationDelay: '2s'
+              }}>
                   <Heart className="text-gray-600 w-4 h-4" />
                 </div>
               </div>
             </div>
 
             {/* Story text */}
-            <div className="animate-fade-up" style={{ animationDelay: '0.2s' }}>
+            <div className="animate-fade-up" style={{
+            animationDelay: '0.2s'
+          }}>
               <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-lg">
                 <h3 className="font-heading text-2xl font-bold text-gray-800 mb-6">
                   We're snack-obsessed techies creating cases that spark joy...
                 </h3>
-                <p className="text-gray-600 text-lg leading-relaxed mb-6">
-                  [Our story began when we realized our two greatest loves - technology and snacks - could come together in the most delightful way. Every case in our collection is inspired by real treats that bring us comfort and happiness.]
-                </p>
-                <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                  [From late-night coding sessions fueled by cookies to brainstorming over bubble tea, we've turned our snack-filled adventures into protective art for your most precious device.]
-                </p>
+                <p className="text-gray-600 text-lg leading-relaxed mb-6">Hey! We’re Agamjot and Marium, two 16-year-old founders of NomNomCase — a fun, snackable phone case brand built from a big idea and a late-night convo. We teamed up to turn a creative spark into something real: edible, customizable phone cases that let you snack in style.
+
+From our original NomNomCase to DIY kits, tasty refills, and snack-inspired merch, everything we make blends flavor, fashion, and fun. As a teen-run partnership, we’re all about thinking outside the box and turning bold ideas into tasty reality.</p>
+                <p className="text-gray-600 text-lg leading-relaxed mb-8"></p>
                 
                 {/* Feature highlights */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -72,8 +73,6 @@ const AboutSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default AboutSection;
